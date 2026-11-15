@@ -39,7 +39,7 @@ public class DinoGame extends JPanel implements Runnable{
 		this.window.setVisible(true);
 		this.requestFocusInWindow();
 		this.start();
-		System.out.println("Hekki Moto");
+//		System.out.println("Hekki Moto");
 	}
 	
 	public void update() {
