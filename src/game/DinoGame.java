@@ -16,7 +16,7 @@ public class DinoGame extends JPanel implements Runnable{
 	public Dimension dim;
 	public boolean running;
 	public Thread gameLoop;
-	public Square square1;
+	public Player player;
 	public Square square2;
 	
 	public DinoGame() {}
@@ -33,9 +33,9 @@ public class DinoGame extends JPanel implements Runnable{
 		this.setPreferredSize(dim);
 		this.window.add(this);
 		this.setBackground(Color.black);
-		this.square1 = new Square(350, 300, 1, 100, Color.red);
+		this.player = new Player();
 		this.square2 = new Square(800, 605-50, 1, 50, Color.green);
-		this.addKeyListener(this.square1);
+		this.addKeyListener(this.player);
 		this.window.setVisible(true);
 		this.requestFocusInWindow();
 		this.start();
@@ -43,17 +43,19 @@ public class DinoGame extends JPanel implements Runnable{
 	}
 	
 	public void update() {
-		if ((square1.y+square1.size >= square2.y && square1.y <= square2.y+square2.size) && (square1.x+square1.size >= square2.x && square1.x <= square2.x+square2.size)) {
-			square1.speed = 0;
+		if ((player.y+player.size >= square2.y && player.y <= square2.y+square2.size) && (player.x+player.size >= square2.x && player.x <= square2.x+square2.size)) {
+			player.speed = 0;
+			square2.speed = 0;
 		}
 		if (square2.y+square2.size == 605) {
 			
 		}
 		square2.update();
+		player.update();
 	}
 	
 	public void render(Graphics g) {
-		square1.render(g);
+		player.render(g);
 		square2.render(g);
 	}
 	
@@ -87,7 +89,7 @@ public class DinoGame extends JPanel implements Runnable{
 	}
 	
 	public static void main(String[] args) {
-		DinoGame game = new DinoGame("Game Fall 2026",800,640);
+		DinoGame game = new DinoGame("Game 2026",800,640);
 		
 	}
 	

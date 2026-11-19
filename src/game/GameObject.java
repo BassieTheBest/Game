@@ -6,13 +6,13 @@ import java.awt.Graphics;
 public abstract class GameObject {
 	public int x;
 	public int y;
-	public int speed;
+	public double speed;
 	public int size;
 	public Color color;
 	
 	public GameObject() {}
 	
-	public GameObject(int x, int y, int speed, int size, Color color) {
+	public GameObject(int x, int y, double speed, int size, Color color) {
 		this.x=x;
 		this.y=y;
 		this.speed=speed;

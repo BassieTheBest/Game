@@ -2,34 +2,25 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class Square extends GameObject implements KeyListener{
-	int keyCode;
-	int jump;
+public class Square extends GameObject {
 	
 	public Square() {}
 	
-	public Square(int x, int y, int speed, int size, Color color) {
+	public Square(int x, int y, double speed, int size, Color color) {
 		super(x,y,speed,size,color);
 	}
 	
 	public void update() {
-		int xSpeed = this.speed;
-		int ySpeed = this.speed;
-		if(this.y<605-size && (this.keyCode != 38 && this.keyCode != 32)) {
-			this.y += ySpeed;
+		if(this.y<605-size) {
+			this.y += this.speed;
 		}
-		if (this.keyCode == 38 || this.keyCode == 32) {
-			this.y -= ySpeed;
-		}
-		
 		if (this.x <= 0) {
 			this.x = 900;
+			this.speed += .2;
 		}
 		else {
-			this.x -= xSpeed;
+			this.x -= this.speed;
 		}
 	}
 	
@@ -38,23 +29,4 @@ public class Square extends GameObject implements KeyListener{
 		g.fillRect(x, y, size, size);
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		System.out.println(e.getKeyCode());
-		this.keyCode = e.getKeyCode();
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent a) {
-		this.keyCode = 0;
-		this.jump = 0;
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		
-		
-	}
 }
