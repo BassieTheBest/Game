@@ -21,6 +21,9 @@ public class DinoGame extends JPanel implements Runnable{
 	public Square square2;
 	public int index;
 	public int counter;
+	public double score = 0;
+	
+    
 	
 	public DinoGame() {}
 	
@@ -47,19 +50,36 @@ public class DinoGame extends JPanel implements Runnable{
 	}
 	
 	public void update() {
+		
 		for (index = 0; index < 2; index++) {
 			if ((player.y+player.size >= enemies[index].y && player.y <= enemies[index].y+enemies[index].height) && (player.x+player.size >= enemies[index].x && player.x <= enemies[index].x+enemies[index].width)) {
 				player.speed = 0;
 				enemies[index].speed = 0;
 			}
-			enemies[index].update();
-			player.update();
+			else {
+				enemies[index].update();
+				player.update();
+				
+			}
+			
 		}
 		if (player.speed == 0) {
 			for (index = 0; index < 2; index++) {
 				enemies[index].speed = 0;
 			}
 		}
+		else {
+			int placeholder = 1;
+			score+=.1;
+			if ((int)(score)/150 == placeholder) {
+				for(index=0; index < 2; index++) {
+					enemies[index].speed += .02;
+					
+				}
+				placeholder++;
+			}
+		}
+		
 	}
 	
 	public void render(Graphics g) {
@@ -67,6 +87,9 @@ public class DinoGame extends JPanel implements Runnable{
 			enemies[index].render(g);
 		}
 		player.render(g);
+		g.setColor(Color.white);
+		g.setFont(g.getFont().deriveFont(24f));
+		g.drawString("Score: "+(int) score, 300, 300);
 		
 	}
 	
