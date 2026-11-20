@@ -17,7 +17,10 @@ public class DinoGame extends JPanel implements Runnable{
 	public boolean running;
 	public Thread gameLoop;
 	public Player player;
+	public Square[] enemies = new Square[2];
 	public Square square2;
+	public int index;
+	public int counter;
 	
 	public DinoGame() {}
 	
@@ -34,7 +37,8 @@ public class DinoGame extends JPanel implements Runnable{
 		this.window.add(this);
 		this.setBackground(Color.black);
 		this.player = new Player();
-		this.square2 = new Square(800, 605-50, 1, 50, Color.green);
+		this.enemies[0] = new Square(800, 605-50, 1, 50, 50,Color.green);
+		this.enemies[1] = new Square(1200, 605-50, 1, 50, 50, Color.green);
 		this.addKeyListener(this.player);
 		this.window.setVisible(true);
 		this.requestFocusInWindow();
@@ -43,20 +47,27 @@ public class DinoGame extends JPanel implements Runnable{
 	}
 	
 	public void update() {
-		if ((player.y+player.size >= square2.y && player.y <= square2.y+square2.size) && (player.x+player.size >= square2.x && player.x <= square2.x+square2.size)) {
-			player.speed = 0;
-			square2.speed = 0;
+		for (index = 0; index < 2; index++) {
+			if ((player.y+player.size >= enemies[index].y && player.y <= enemies[index].y+enemies[index].height) && (player.x+player.size >= enemies[index].x && player.x <= enemies[index].x+enemies[index].width)) {
+				player.speed = 0;
+				enemies[index].speed = 0;
+			}
+			enemies[index].update();
+			player.update();
 		}
-		if (square2.y+square2.size == 605) {
-			
+		if (player.speed == 0) {
+			for (index = 0; index < 2; index++) {
+				enemies[index].speed = 0;
+			}
 		}
-		square2.update();
-		player.update();
 	}
 	
 	public void render(Graphics g) {
+		for (index = 0; index < 2; index++) {
+			enemies[index].render(g);
+		}
 		player.render(g);
-		square2.render(g);
+		
 	}
 	
 	@Override

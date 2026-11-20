@@ -33,10 +33,13 @@ public class Player extends GameObject implements KeyListener{
 		}
 		if (this.keyCode == 38 || this.keyCode == 32) {
 			for (index = 0; index < 3; index++) {
-				if (this.y <= 610-size) {
+				if (this.y <= 450) {
 					counter = 5;
 				}
-				this.y -= this.speed;
+				else {
+					this.y -= this.speed;
+				}
+				
 			}
 			
 			
@@ -51,19 +54,19 @@ public class Player extends GameObject implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		counter++;
-		if (counter > 2) {
+		if (counter > 5) {
 			this.keyCode = 0;
 		}
 		else {
 			this.keyCode = e.getKeyCode();
-			System.out.println(counter);
+			System.out.println(counter + " " + this.y);
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		this.keyCode = 0;
-		this.counter = 3; 
+		this.counter = 6; 
 		
 	}
 

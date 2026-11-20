@@ -7,16 +7,18 @@ public abstract class GameObject {
 	public int x;
 	public int y;
 	public double speed;
-	public int size;
+	public int width;
+	public int height;
 	public Color color;
 	
 	public GameObject() {}
 	
-	public GameObject(int x, int y, double speed, int size, Color color) {
+	public GameObject(int x, int y, double speed, int width, int height, Color color) {
 		this.x=x;
 		this.y=y;
 		this.speed=speed;
-		this.size=size;
+		this.width=width;
+		this.height = height;
 		this.color=color;
 	}
 	
