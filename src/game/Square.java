@@ -9,7 +9,7 @@ public class Square extends GameObject {
 	
 	public Square() {}
 	
-	public Square(int x, int y, double speed, int width, int height, Color color) {
+	public Square(double x, double y, double speed, double width, double height, Color color) {
 		super(x, y, speed, width, height, color);
 	}
 	
@@ -20,7 +20,7 @@ public class Square extends GameObject {
 		if (this.x <= 0) {
 			this.x = 900;
 			this.width = random.nextInt(30, 60);
-			this.height = random.nextInt(20, 80);
+			this.height = random.nextInt(40, 80);
 		}
 		else {
 			this.x -= this.speed;
@@ -29,7 +29,7 @@ public class Square extends GameObject {
 	
 	public void render(Graphics g) {
 		g.setColor(this.color);
-		g.fillRect(x, y, width, height);
+		g.fillRect((int)x, (int)y, (int)width, (int)height);
 	}
 
 }

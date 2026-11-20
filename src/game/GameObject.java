@@ -4,16 +4,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class GameObject {
-	public int x;
-	public int y;
+	public double x;
+	public double y;
 	public double speed;
-	public int width;
-	public int height;
+	public double width;
+	public double height;
 	public Color color;
 	
 	public GameObject() {}
 	
-	public GameObject(int x, int y, double speed, int width, int height, Color color) {
+	public GameObject(double x, double y, double speed, double width, double height, Color color) {
 		this.x=x;
 		this.y=y;
 		this.speed=speed;

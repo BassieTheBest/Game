@@ -59,7 +59,6 @@ public class Player extends GameObject implements KeyListener{
 		}
 		else {
 			this.keyCode = e.getKeyCode();
-			System.out.println(counter + " " + this.y);
 		}
 	}
 

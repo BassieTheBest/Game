@@ -69,14 +69,12 @@ public class DinoGame extends JPanel implements Runnable{
 			}
 		}
 		else {
-			int placeholder = 1;
 			score+=.1;
-			if ((int)(score)/150 == placeholder) {
-				for(index=0; index < 2; index++) {
-					enemies[index].speed += .02;
+			if ((int)(score)%150 == 0 && (int) score != 0) {
+				enemies[0].speed += .01;
+				enemies[1].speed += .01;
 					
-				}
-				placeholder++;
+				
 			}
 		}
 		
