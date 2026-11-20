@@ -18,7 +18,6 @@ public class DinoGame extends JPanel implements Runnable{
 	public Thread gameLoop;
 	public Player player;
 	public Square[] enemies = new Square[2];
-	public Square square2;
 	public int index;
 	public int counter;
 	public double score = 0;
