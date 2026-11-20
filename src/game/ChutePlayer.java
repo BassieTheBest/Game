@@ -10,7 +10,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class ChutePlayer extends GameObject implements KeyListener{
-	int size;
 	 int x;
 	 int y;
 	 int speed;
@@ -20,9 +19,8 @@ public class ChutePlayer extends GameObject implements KeyListener{
 	
 	
 	public ChutePlayer() {
-		this.size = 50;
 		this.x = 375;
-		this.y = 605-50;
+		this.y = 200;
 		this.speed = 1;
 		this.color = Color.pink;
 		loadImage();
@@ -35,11 +33,11 @@ public class ChutePlayer extends GameObject implements KeyListener{
 		if (this.keyCode == 39) {
 			this.x += this.speed;
 		}
-		if (this.x < 0-this.size) {
+		if (this.x < 0-75) {
 			System.out.println("FD");
 			this.x = 798;
 		}
-		if (this.x > 750+this.size) {
+		if (this.x > 750+75) {
 			System.out.println("lk");
 			this.x = -48;
 		}
@@ -47,15 +45,14 @@ public class ChutePlayer extends GameObject implements KeyListener{
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(this.image,this.x,this.y,null);
+		g.drawImage(image, x, y, 75, 75, color, null);
 	}
 	
 	public void loadImage() {
-		File imageFile = new File("images/ship4.png");
+		File imageFile = new File("Images/Player.png");
 		try {
 			this.image = ImageIO.read(imageFile);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

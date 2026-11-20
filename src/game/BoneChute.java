@@ -16,6 +16,8 @@ public class BoneChute extends JPanel implements Runnable{
 	public boolean running;
 	public Thread gameLoop;
 	public ChutePlayer player;
+	public BoneObs plat;
+	public BoneObs plat2;
 	public int index;
 	public int counter;
 	public double score = 0;
@@ -35,18 +37,31 @@ public class BoneChute extends JPanel implements Runnable{
 		this.setPreferredSize(dim);
 		this.window.add(this);
 		this.setBackground(Color.black);
+		
 		this.player = new ChutePlayer();
 		this.addKeyListener(this.player);
+		this.plat = new BoneObs(0,50,1,300,20,Color.red);
+		this.plat2 = new BoneObs(500,50,1,300,20,Color.red);
+		
 		this.window.setVisible(true);
 		this.requestFocusInWindow();
 		this.start();
 	}
 	
 	public void update() {
+		if ((player.y+75 >= plat.y && player.y-75 <= plat.y)) {
+			plat.speed = 0;
+			plat2.speed = 0;
+			player.speed = 0;
+		}
 		player.update();
+		plat.update();
+		plat2.update();
 	}
 	public void render(Graphics g) {
 		player.render(g);
+		plat.render(g);
+		plat2.render(g);
 	}
 	
 	@Override
