@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class ChutePlayer extends GameObject implements KeyListener{
 	int size;
@@ -12,6 +16,7 @@ public class ChutePlayer extends GameObject implements KeyListener{
 	 int speed;
 	 Color color;
 	 int keyCode;
+	 BufferedImage image;
 	
 	
 	public ChutePlayer() {
@@ -20,6 +25,7 @@ public class ChutePlayer extends GameObject implements KeyListener{
 		this.y = 605-50;
 		this.speed = 1;
 		this.color = Color.pink;
+		loadImage();
 	}
 	
 	public void update() {
@@ -41,8 +47,17 @@ public class ChutePlayer extends GameObject implements KeyListener{
 	}
 	
 	public void render(Graphics g) {
-		g.setColor(this.color);
-		g.fillRect(x, y, size, size);
+		g.drawImage(this.image,this.x,this.y,null);
+	}
+	
+	public void loadImage() {
+		File imageFile = new File("images/ship4.png");
+		try {
+			this.image = ImageIO.read(imageFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
