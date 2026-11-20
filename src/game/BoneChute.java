@@ -15,7 +15,7 @@ public class BoneChute extends JPanel implements Runnable{
 	public Dimension dim;
 	public boolean running;
 	public Thread gameLoop;
-	public Player player;
+	public ChutePlayer player;
 	public int index;
 	public int counter;
 	public double score = 0;
@@ -35,7 +35,7 @@ public class BoneChute extends JPanel implements Runnable{
 		this.setPreferredSize(dim);
 		this.window.add(this);
 		this.setBackground(Color.black);
-		this.player = new Player();
+		this.player = new ChutePlayer();
 		this.addKeyListener(this.player);
 		this.window.setVisible(true);
 		this.requestFocusInWindow();
