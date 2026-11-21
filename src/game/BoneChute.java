@@ -36,7 +36,7 @@ public class BoneChute extends JPanel implements Runnable{
 		this.setDoubleBuffered(true);
 		this.setPreferredSize(dim);
 		this.window.add(this);
-		this.setBackground(Color.black);
+		this.setBackground(Color.white);
 		
 		this.player = new ChutePlayer();
 		this.addKeyListener(this.player);
@@ -49,7 +49,7 @@ public class BoneChute extends JPanel implements Runnable{
 	}
 	
 	public void update() {
-		if ((player.y+75 >= plat.y && player.y-75 <= plat.y)) {
+		if ((player.y+75 >= plat.y && player.y <= plat.y+plat.height) && (player.x+75 >= plat.x && player.x <= plat.x+plat.width) || (player.y+75 >= plat2.y && player.y <= plat2.y+plat2.height) && (player.x+75 >= plat2.x && player.x <= plat2.x+plat2.width)) {
 			plat.speed = 0;
 			plat2.speed = 0;
 			player.speed = 0;

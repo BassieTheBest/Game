@@ -21,7 +21,7 @@ public class ChutePlayer extends GameObject implements KeyListener{
 	public ChutePlayer() {
 		this.x = 375;
 		this.y = 200;
-		this.speed = 1;
+		this.speed = 2;
 		this.color = Color.pink;
 		loadImage();
 	}
